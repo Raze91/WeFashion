@@ -28,7 +28,6 @@ class CreateProductsTable extends Migration
             $table->boolean("published")->default(false);
             $table->boolean("discount")->default(false);
             $table->string("ref", 16);
-            $table->timestamps();
         });
     }
 
