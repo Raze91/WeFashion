@@ -25,7 +25,7 @@ class FrontController extends Controller
 
     public function show(int $id)
     {
-        return view('front.show', ['product' => Product::find($id)]);
+        return view('front.product', ['product' => Product::find($id)]);
     }
 
     public function showCategories(int $id)

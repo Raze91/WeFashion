@@ -9,7 +9,7 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price', 'ref'];
 
     public function scopeDiscount($query){
-        return $query->where('discount', false);
+        return $query->where('discount', true);
     }
 
     public function category() {
