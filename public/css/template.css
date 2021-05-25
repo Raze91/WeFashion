@@ -1,11 +1,14 @@
 .product-card {
     background-color: white;
     padding: 10px;
-    margin: 10px;
+    margin: 15px 0;
     width: 30%;
+    min-width: 200px;
+    box-shadow: 5px 5px 0 rgb(216, 213, 213);
+    border-radius: 10px;
 }
 .product-card h2 {
-    
+    margin: 0 0 10px 0;
 }
 .product-card p {
     word-break: break-all;
@@ -14,6 +17,79 @@
 
 .products-ctnr {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+nav {
+    display: flex; 
+    background-color: dimgrey; 
+    color: white; 
+    padding: 20px 0; 
+    align-items: center;
+}
+
+nav div {
+    width: 80%;
+    margin: auto;
+}
+
+nav li:first-of-type a {
+    margin: 0;
+    color: #66EB9A;
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+nav li a {
+    color: white;
+}
+
+nav li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.content {
+    width: 80%;
+    margin: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer {
+    background-color: dimgrey;
+}
+.footer-content {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-content div{
+    text-align: center;
+}
+
+.footer-content div ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-content div ul li a {
+    color: white;
 }

@@ -11,16 +11,17 @@
 </head>
 
 <body>
-    <div>
-        <div style="display: flex; background-color: gray; color: white; padding: 20px 40px; align-items: center">
-            @include('partials.menu')
-        </div>
-        <div style="padding: 20px 60px">
-            <div>
-                @yield('content')
-            </div>
+    <nav>
+        @include('partials.menu')
+    </nav>
+    <div class="content">
+        <div>
+            @yield('content')
         </div>
     </div>
+    <footer>
+        @include('partials.footer')
+    </footer>
     @section('scripts')
     <script src="{{asset('js/app.js')}}"></script>
     @show

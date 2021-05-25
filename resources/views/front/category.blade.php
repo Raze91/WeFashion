@@ -2,7 +2,10 @@
 
 @section('content')
 
-<h1>Categorie {{$category->gender}}</h1>
+<header>
+    <h1>Catégorie {{$category->gender}} :</h1>
+    <h2>{{count($products)}} résultat(s)</h2>
+</header>
 {{$products->links()}}
 
 <div class="products-ctnr">
