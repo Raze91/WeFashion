@@ -1,3 +1,6 @@
+body {
+    font-family: Poppins;
+}
 .product-card {
     background-color: white;
     padding: 10px;
@@ -46,6 +49,7 @@ nav ul {
     margin: 0;
     padding: 0;
     width: 100%;
+    align-items: center;
 }
 
 nav li a {
@@ -62,10 +66,58 @@ nav li a:hover {
     margin: auto;
 }
 
+.content img {
+    width: 100%;
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.prices {
+    display: flex;
+}
+.prices p {
+    font-weight: bold;
+}
+
+.prices .old {
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.selected-product-ctnr {
+    width: 80%;
+    padding: 20px 0;
+    margin: auto;
+    display: flex;
+}
+
+.selected-product-ctnr label {
+    width: 50%;
+    display: flex;
+}
+.selected-product-ctnr select {
+    margin-left: 10px;
+    width: 30%;
+}
+
+.selected-product-ctnr img {
+    width: 50%;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.selected-product-ctnr .discount {
+    font-weight: bold;
+}
+
+.selected-product-ctnr span {
+    font-weight: bold;
 }
 
 footer {
@@ -92,4 +144,35 @@ footer {
 
 .footer-content div ul li a {
     color: white;
+}
+
+@media  (max-width: 674px) {
+    .content {
+        width: 100%;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column-reverse;
+    }
+
+    .footer-content {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .footer-content div {
+        margin: 10px 0;
+    }
+
+    .selected-product-ctnr {
+        flex-direction: column;
+    }
+
+    .selected-product-ctnr img {
+        width: 100%;
+    }
 }
