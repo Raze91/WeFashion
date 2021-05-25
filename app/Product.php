@@ -15,4 +15,5 @@ class Product extends Model
     public function picture() {
         return $this->hasOne(Image::class);
     }
+    public $timestamps = false;
 }
