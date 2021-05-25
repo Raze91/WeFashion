@@ -28,10 +28,16 @@ class FrontController extends Controller
         return view('front.show', ['product' => Product::find($id)]);
     }
 
-    public function showGenres(int $id)
+    public function showCategories(int $id)
     {
-        $products = Category::find($id)->books()->paginate(5);
+        $products = Category::find($id)->products()->paginate(6);
 
         return view('front.category', ['products' => $products, 'category' => Category::find($id)]);
+    }
+
+    public function showDiscount() {
+        $products = Product::discount()->paginate(6);
+
+        return view('front.discount', ['products' => $products]);
     }
 }
