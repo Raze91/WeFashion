@@ -1,0 +1,19 @@
+.product-card {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+}
+.product-card h2 {
+    
+}
+.product-card p {
+    word-break: break-all;
+    margin: 0;
+}
+
+.products-ctnr {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
