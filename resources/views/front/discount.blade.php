@@ -6,7 +6,6 @@
     <h1>Produits en soldes :</h1>
     <h2>{{count($products)}} résultat(s)</h2>
 </header>
-{{$products->links()}}
 <div class="products-ctnr">
     @forelse($products as $product)
 
@@ -23,5 +22,6 @@
     <h2>Pas de produit</h2>
     @endforelse
 </div>
+{{$products->links()}}
 
 @endsection

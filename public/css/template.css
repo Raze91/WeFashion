@@ -1,5 +1,6 @@
 body {
     font-family: Poppins;
+    text-align: center;
 }
 .product-card {
     background-color: white;
@@ -9,6 +10,7 @@ body {
     min-width: 200px;
     box-shadow: 5px 5px 0 rgb(216, 213, 213);
     border-radius: 10px;
+    text-align: left;
 }
 .product-card h2 {
     margin: 0 0 10px 0;
@@ -26,7 +28,7 @@ body {
 }
 nav {
     display: flex; 
-    background-color: dimgrey; 
+    background-color: steelblue; 
     color: white; 
     padding: 20px 0; 
     align-items: center;
@@ -37,7 +39,22 @@ nav div {
     margin: auto;
 }
 
-nav li:first-of-type a {
+nav .left , nav .right {
+    display: flex;
+    margin: 0;
+    width: auto;
+}
+
+nav .left li {
+    margin-right: 15px;
+}
+
+nav .right li {
+    display: flex;
+    margin-left: 15px;
+}
+
+nav .logo {
     margin: 0;
     color: #66EB9A;
     margin-right: 20px;
@@ -50,6 +67,7 @@ nav ul {
     padding: 0;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
 }
 
 nav li a {
@@ -64,6 +82,7 @@ nav li a:hover {
 .content {
     width: 80%;
     margin: auto;
+    padding: 20px 0;
 }
 
 .content img {
@@ -95,6 +114,7 @@ header {
     padding: 20px 0;
     margin: auto;
     display: flex;
+    text-align: left;
 }
 
 .selected-product-ctnr label {
@@ -121,7 +141,7 @@ header {
 }
 
 footer {
-    background-color: dimgrey;
+    background-color: steelblue;
 }
 .footer-content {
     width: 80%;
@@ -146,6 +166,10 @@ footer {
     color: white;
 }
 
+.pagination {
+    margin: 22px auto;
+}
+
 @media  (max-width: 674px) {
     .content {
         width: 100%;
@@ -157,6 +181,7 @@ footer {
 
     header {
         flex-direction: column-reverse;
+        text-align: center;
     }
 
     .footer-content {

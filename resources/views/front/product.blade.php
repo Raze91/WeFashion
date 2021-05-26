@@ -17,6 +17,8 @@
         <p class="discount">{{$product->discount == 1 ? "Produit actuellement en solde" : "Produit non soldé"}}</p>
 
         <p><span>Prix :</span> {{$product->discount ? (50/100) * $product->price . "€ au lieu de " . $product->price : $product->price}} €</p>
+
+        <p><span>Catégorie : </span> {{$product->category->gender}}</p>
     </div>
 </section>
 

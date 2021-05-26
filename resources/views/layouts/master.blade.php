@@ -17,9 +17,7 @@
         @include('partials.menu')
     </nav>
     <div class="content">
-        <div>
-            @yield('content')
-        </div>
+        @yield('content')
     </div>
     <footer>
         @include('partials.footer')
