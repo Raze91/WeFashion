@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Product;
 use ArrayObject;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class ProductController extends Controller
         return view('back.product.create', ['categories' => $categories, 'ref' => $token]);
     }
 
-    public function store(StoreBookRequest $request)
+    public function store(StoreProductRequest $request)
     {
 
         $product = Product::create($request->all());
@@ -67,7 +67,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreBookRequest $request, $id)
+    public function update(StoreProductRequest $request, $id)
     {
 
         $product = Product::find($id);

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreBookRequest extends FormRequest
+class StoreCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +23,8 @@ class StoreBookRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'name' => 'required',
-            'description' => 'string',
-            "size" => 'required|' . Rule::in(['XS','S','M','L','XL']),
-            "price" => 'numeric',
-            'category_id' => 'integer',
-            'published' => 'boolean',
-            'discount' => 'boolean',
-            'picture' => 'image|max:3000',
+            'gender' => 'required|string',
         ];
     }
 }

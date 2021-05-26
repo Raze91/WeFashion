@@ -4,10 +4,13 @@
 
 <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
-    
+
     <h1>Créer une nouvelle catégorie :</h1>
 
-    <input type="text" name="gender"  />
+    <input type="text" name="gender" />
+    @if($errors->has('gender'))
+    <span class="error">{{$errors->first('gender')}}</span>
+    @endif
 
     <button type="submit">Ajouter la catégorie</button>
 </form>

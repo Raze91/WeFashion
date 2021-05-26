@@ -21,14 +21,13 @@
         <div class="right">
 
             @if(Auth::check())
-            @if(Route::is('product.*') == true)
+            @if($isAdmin)
+            @if(Route::is('product.*') == false && Route::is('category.*') == false)
+            <li><a href="{{route('product.index')}}">Dashboard</a></li>
+            @else
             <li>
                 <a href="/">Retour</a>
             </li>
-            @endif
-            @if($isAdmin)
-            @if(Route::is('product.*') == false)
-            <li><a href="{{route('product.index')}}">Dashboard</a></li>
             @endif
             @endif
             <li>
