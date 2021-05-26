@@ -25,4 +25,5 @@ Auth::routes();
 
 Route::middleware(['auth', 'checkElevation'])->group(function () {
     Route::resource('admin/product', 'ProductController');
+    Route::resource('admin/category', 'CategoryController');
 });

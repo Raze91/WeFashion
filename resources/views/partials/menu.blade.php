@@ -1,8 +1,8 @@
 <div>
     <ul>
         <div class="left">
-            
-            @if(Route::is('product.*') == false)
+
+            @if(Route::is('product.*') == false && Route::is('category.*') == false)
             <li>
                 <a class="logo" href="/">WE FASHION</a>
             </li>
@@ -11,9 +11,11 @@
             <li><a href="{{url('category/' . $id)}}">{{$category}}</a></li>
             @endforeach
             @else
-            <li><p class="logo">WE FASHION</p></li>
-            <li><a>Produits</a></li>
-            <li><a>Catégorie</a></li>
+            <li>
+                <p class="logo">WE FASHION</p>
+            </li>
+            <li><a href="{{route('product.index')}}">Produits</a></li>
+            <li><a href="{{route('category.index')}}" >Catégorie</a></li>
             @endif
         </div>
         <div class="right">
