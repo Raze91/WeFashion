@@ -2,11 +2,13 @@
 
 @section('content')
 
-<form action="{{route('product.index')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('product.store', $categories)}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     <h1>Créer un nouveau produit :</h1>
     <div class="global-ctnr">
         <div class="left-ctnr">
+
+            <input type="hidden" name="ref" value="{{bin2hex(random_bytes(8))}}" />
 
             <label for="name">Nom :
                 <input type="text" name="name" id="name" placeholder="Nom du produit" value="{{old('name')}}" />
@@ -23,7 +25,7 @@
             </label>
 
             <label>Prix :
-                <input type="number" name="price" id="price" value="{{old('price')}}" />
+                <input type="number" min="1" max="9999" step="0.01" name="price" id="price" value="{{old('price')}}" />
             </label>
 
             <label>Taille :

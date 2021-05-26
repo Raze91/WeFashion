@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'price', "category_id", "published", "discount", "size", "ref"];
+    protected $fillable = ['name', 'description', 'price', "category_id", "published", "discount", "size", "ref", "image"];
 
     public function setDiscountAttribute($value) {
         if ($value == "1") {
@@ -32,7 +32,7 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function picture() {
+    public function image() {
         return $this->hasOne(Image::class);
     }
     public $timestamps = false;

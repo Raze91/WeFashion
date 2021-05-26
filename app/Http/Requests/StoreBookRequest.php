@@ -27,7 +27,7 @@ class StoreBookRequest extends FormRequest
 
         return [
             'name' => 'required',
-            'description' => 'required|string',
+            'description' => 'string',
             "size" => 'required|' . Rule::in(['XS','S','M','L','XL']),
             "price" => 'numeric',
             'category_id' => 'integer',

@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    public function products() {
+    protected $fillable = ["link", "product_id"];
+
+    public function products()
+    {
         return $this->belongsTo(Product::class);
     }
+    public $timestamps = false;
 }

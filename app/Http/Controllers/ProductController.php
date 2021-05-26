@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreBookRequest;
 use App\Product;
+use ArrayObject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use phpDocumentor\Reflection\Types\Array_ as TypesArray_;
+use phpDocumentor\Reflection\Types\Object_;
+use PhpParser\Node\Expr\Array_;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $products = Product::paginate(15);
 
         return view('back.product.index', ['products' => $products]);
@@ -20,27 +25,29 @@ class ProductController extends Controller
         // permet de récupérer une collection type array avec en clé id => name
         $categories = Category::pluck('gender', 'id')->all();
 
-        return view('back.product.create', ['categories' => $categories]);
+        $token = bin2hex(random_bytes(8));
+
+        return view('back.product.create', ['categories' => $categories, 'ref' => $token]);
     }
 
-    public function store(StoreBookRequest $request) {
+    public function store(StoreBookRequest $request)
+    {
 
-        
         $product = Product::create($request->all());
 
+        $im = $request->file('picture');
 
 
-        // $im = $request->file('picture');
+        if (!empty($im)) {
+            // méthode store retourne un link hash sécurisé
+            $link = $request->file('picture')->store('/');
 
-        // if(!empty($im)) {
-        //     // méthode store retourne un link hash sécurisé
-        //     $link = $request->file('picture')->store('/');
-    
-        //     $product->picture()->create([
-        //         'link' => $link,
-        //         'title' => $request->title_image ?? $request->title
-        //     ]);
-        // }
+
+            $product->image()->create([
+                'link' => $link,
+                'product_id' => 2
+            ]);
+        }
 
         return redirect()->route('product.index')->with('message', 'Produit créé avec succés !');
     }
@@ -66,7 +73,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $product->update($request->all());
-        
+
 
         // $im = $request->file('picture');
 
@@ -95,9 +102,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        
+
         $product->delete();
-        
+
         return redirect()->route('product.index')->with('success', 'Produit supprimé avec succés !');
     }
 }

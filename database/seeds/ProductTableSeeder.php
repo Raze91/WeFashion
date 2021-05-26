@@ -26,6 +26,8 @@ class ProductTableSeeder extends Seeder
 
             // pour chaque $book on lui associe un genre en particulier
             $product->category()->associate($category);
+
+            
             $product->save(); // il faut sauvegarder l'association pour faire persister en base de données
         });
     }

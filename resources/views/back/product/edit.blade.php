@@ -24,7 +24,7 @@
             </label>
 
             <label>Prix :
-                <input type="number" name="price" id="price" value="{{$product->price}}" />
+                <input type="number" min="1" max="9999" step="0.01" name="price" id="price" value="{{$product->price}}" />
             </label>
 
             <label>Taille :
