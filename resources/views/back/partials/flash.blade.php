@@ -1,5 +1,5 @@
-@if(Session::has('message'))
+@if(Session::has('success'))
 <div>
-    <p>{{Session::get('message')}}</p>
+    <p class="success">{{Session::get('success')}}</p>
 </div>
 @endif

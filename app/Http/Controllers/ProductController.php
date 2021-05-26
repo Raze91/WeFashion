@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -19,5 +20,13 @@ class ProductController extends Controller
         $categories = Category::pluck('name', 'id')->all();
 
         return view('back.product.create', ['categories' => $categories]);
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        
+        $product->delete();
+        return redirect()->route('product.index')->with('success', 'Produit supprimé avec succés !');
     }
 }

@@ -20,5 +20,5 @@
     <h2>Pas de produit</h2>
     @endforelse
 </div>
-
+{{$products->links()}}
 @endsection

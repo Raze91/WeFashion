@@ -170,6 +170,12 @@ footer {
     margin: 22px auto;
 }
 
+.success {
+    margin: 10px 0;
+    background-color: #66EB9A;
+    color: white;
+    padding: 7px;
+}
 @media  (max-width: 674px) {
     .content {
         width: 100%;
