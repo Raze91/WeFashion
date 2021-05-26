@@ -2,37 +2,38 @@
 
 @section('content')
 
-<form action="{{route('product.index')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
+    {{method_field('PUT')}}
     <h1>Créer un nouveau produit :</h1>
     <div class="global-ctnr">
         <div class="left-ctnr">
 
             <label for="name">Nom :
-                <input type="text" name="name" id="name" placeholder="Nom du produit" value="{{old('name')}}" />
+                <input type="text" name="name" id="name" placeholder="Nom du produit" value="{{$product->name}}" />
                 @if($errors->has('name'))
                 <span class="error">{{$errors->first('name')}}</span>
                 @endif
             </label>
 
             <label for="description">Description :
-                <textarea name="description" id="description">{{old('description')}}</textarea>
+                <textarea name="description" id="description">{{$product->description}}</textarea>
                 @if($errors->has('description'))
                 <span class="error">{{$errors->first('description')}}</span>
                 @endif
             </label>
 
             <label>Prix :
-                <input type="number" name="price" id="price" value="{{old('price')}}" />
+                <input type="number" name="price" id="price" value="{{$product->price}}" />
             </label>
 
             <label>Taille :
                 <select name="size" id="size">
-                    <option {{ old('size') == "XS" ? 'selected' : '' }} value="XS">XS</option>
-                    <option {{ old('size') == "S" ? 'selected' : '' }} value="S">S</option>
-                    <option {{ old('size') == "M" ? 'selected' : ''}} value="M">M</option>
-                    <option {{ old('size') == "L" ? 'selected' : ''}} value="L">L</option>
-                    <option {{ old('size') == "XL" ? 'selected' : ''}} value="XL">XL</option>
+                    <option {{ $product->size == "XS" ? 'selected' : '' }} value="XS">XS</option>
+                    <option {{ $product->size == "S" ? 'selected' : '' }} value="S">S</option>
+                    <option {{ $product->size == "M" ? 'selected' : ''}} value="M">M</option>
+                    <option {{ $product->size == "L" ? 'selected' : ''}} value="L">L</option>
+                    <option {{ $product->size == "XL" ? 'selected' : ''}} value="XL">XL</option>
                 </select>
             </label>
 
@@ -40,7 +41,7 @@
                 <select id="categories" name="category_id">
                     <option value="0" {{ is_null(old( 'category_id' )) ? 'selected' : '' }}>No category</option>
                     @foreach($categories as $id => $gender)
-                    <option {{ old('category_id') == $id ? 'selected' : '' }} value="{{$id}}">{{$gender}}</option>
+                    <option {{ (!is_null($product->category) and $product->category->id == $id)? 'selected' : '' }} value="{{$id}}">{{$gender}}</option>
                     @endforeach
                 </select>
             </label>
@@ -54,11 +55,11 @@
 
                 <div class="radio-ctnr">
                     <label>Publié
-                        <input type="radio" @if(old('published')==1 ) checked @endif name="published" value="1" checked />
+                        <input type="radio" @if($product->published ==1 ) checked @endif name="published" id="published" value="1" checked/>
                     </label>
 
                     <label>Pas Publié
-                        <input type="radio" @if(old('published')==0 ) checked @endif name="published" value="0" />
+                        <input type="radio" @if($product->published ==0 ) checked @endif name="published" id="published" value="0" />
                     </label>
                 </div>
             </div>
@@ -68,11 +69,11 @@
 
                 <div class="radio-ctnr">
                     <label>En solde
-                        <input type="radio" @if(old('discount')==1 ) checked @endif name="discount" value="1" checked />
+                        <input type="radio" @if($product->discount ==1 ) checked @endif name="discount" id="discount" value="1" checked/>
                     </label>
 
                     <label>Pas en solde
-                        <input type="radio" @if(old('discount')==0 ) checked @endif name="discount" value="0" />
+                        <input type="radio" @if($product->discount ==0 ) checked @endif name="discount" id="discount" value="0" />
                     </label>
                 </div>
             </div>
@@ -83,7 +84,7 @@
                 @if($errors->has('picture')) <span class="error">{{$errors->first('picture')}}</span> @endif
             </div>
 
-            <button type="submit">Créer un produit</button>
+            <button type="submit">Modifier le produit</button>
         </div>
     </div>
 

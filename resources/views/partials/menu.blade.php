@@ -42,8 +42,3 @@
         </div>
     </ul>
 </div>
-
-<style>
-
-
-</style>
