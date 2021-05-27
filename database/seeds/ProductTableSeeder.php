@@ -44,7 +44,7 @@ class ProductTableSeeder extends Seeder
             // pour chaque $product on lui associe un genre en particulier
             $product->category()->associate($category);
 
-            $files = Storage::allFiles($category->gender == "Homme" ? "hommes" : "femmes");
+            $files = Storage::allFiles($category->gender);
 
             $fileIndex = array_rand($files);
             $file = $files[$fileIndex];

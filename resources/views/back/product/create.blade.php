@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('product.index')}}" method="POST" enctype="multipart/form-data">
+<form class="form" action="{{route('product.index')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     <h1>Créer un nouveau produit :</h1>
     <div class="global-ctnr">
@@ -49,7 +49,7 @@
 
             <label>Categories :
                 <select id="categories" name="category_id">
-                    <option value="0" {{ is_null(old( 'category_id' )) ? 'selected' : '' }}>No category</option>
+                    <option value="0" {{ old( 'category_id' ) ? 'selected' : '' }}>No category</option>
                     @foreach($categories as $id => $gender)
                     <option {{ old('category_id') == $id ? 'selected' : '' }} value="{{$id}}">{{$gender}}</option>
                     @endforeach
@@ -65,11 +65,11 @@
 
                 <div class="radio-ctnr">
                     <label>Publié
-                        <input type="radio" @if(old('published')==1 ) checked @endif name="published" value="1" checked />
+                        <input type="radio" @if(old('published')== 1 ) checked @endif name="published" value="1" checked />
                     </label>
 
                     <label>Pas Publié
-                        <input type="radio" @if(old('published')==0 ) checked @endif name="published" value="0" />
+                        <input type="radio" @if(old('published')== 0 ) checked @endif name="published" value="0" />
                     </label>
                 </div>
             </div>
@@ -79,11 +79,11 @@
 
                 <div class="radio-ctnr">
                     <label>En solde
-                        <input type="radio" @if(old('discount')==1 ) checked @endif name="discount" value="1" checked />
+                        <input type="radio" @if(old('discount')== 1 ) checked @endif name="discount" value="1" checked />
                     </label>
 
                     <label>Pas en solde
-                        <input type="radio" @if(old('discount')==0 ) checked @endif name="discount" value="0" />
+                        <input type="radio" @if(old('discount')== 0 ) checked @endif name="discount" value="0" />
                     </label>
                 </div>
             </div>
@@ -122,30 +122,7 @@
         margin-bottom: 10px;
     }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-    }
-
-    form label {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 5px 0;
-        width: 50%;
-    }
-
-    form label div {
-        display: flex;
-        width: 100%;
-    }
-
-    form label input,
-    form label textarea,
-    form label select {
-        width: 100%;
-    }
+    
 
     .global-ctnr {
         display: flex;

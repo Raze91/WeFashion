@@ -34,7 +34,6 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-
         $product = Product::create($request->all());
 
         $product->sizes()->attach($request->sizes);
@@ -43,7 +42,14 @@ class ProductController extends Controller
 
         if (!empty($im)) {
             // méthode store retourne un link hash sécurisé
-            $link = $request->file('picture')->store('/');
+            if ($request->category_id !== "0") {
+                $category = Category::find($request->category_id)->gender;
+
+                // méthode store retourne un link hash sécurisé
+                $link = $request->file('picture')->store('/' . $category);
+            } else {
+                $link = $request->file('picture')->store('/NoCategorie');
+            }
 
 
             $product->image()->create([
@@ -77,27 +83,31 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
+
         $product->sizes()->sync($request->sizes);
 
-        // $im = $request->file('picture');
 
-        // // si on associe une image à un book 
-        // if (!empty($im)) {
+        $im = $request->file('picture');
 
-        //     $link = $request->file('picture')->store('/');
+        if (!empty($im)) {
+            if ($request->category_id !== "0") {
+                $category = Category::find($request->category_id)->gender;
 
-        //     // suppression de l'image si elle existe 
-        //     if ($book->picture) {
-        //         Storage::disk('local')->delete($book->picture->link); // supprimer physiquement l'image
-        //         $book->picture()->delete(); // supprimer l'information en base de données
-        //     }
+                // méthode store retourne un link hash sécurisé
+                $link = $request->file('picture')->store('/' . $category);
+            } else {
+                $link = $request->file('picture')->store('/NoCategorie');
+            }
 
-        //     // mettre à jour la table picture pour le lien vers l'image dans la base de données
-        //     $book->picture()->create([
-        //         'link' => $link,
-        //         'title' => $request->title_image ?? $request->title
-        //     ]);
-        // }
+            if ($product->image) {
+                $product->image()->delete(); // supprimer l'information en base de données
+            }
+
+            // mettre à jour la table picture pour le lien vers l'image dans la base de données
+            $product->image()->create([
+                'link' => $link,
+            ]);
+        }
 
 
         return redirect()->route('product.index')->with('message', 'Produit mis à jour avec succès !');

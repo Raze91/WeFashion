@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
+<form class="form" action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     {{method_field('PUT')}}
     <h1>Modifier un nouveau produit :</h1>
@@ -58,11 +58,11 @@
 
                 <div class="radio-ctnr">
                     <label>Publié
-                        <input type="radio" @if($product->published ==1 ) checked @endif name="published" id="published" value="1" checked/>
+                        <input type="radio" @if($product->published == 1 ) checked @endif name="published" id="published" value="1" checked/>
                     </label>
 
                     <label>Pas Publié
-                        <input type="radio" @if($product->published ==0 ) checked @endif name="published" id="published" value="0" />
+                        <input type="radio" @if($product->published == 0 ) checked @endif name="published" id="published" value="0" />
                     </label>
                 </div>
             </div>
@@ -72,11 +72,11 @@
 
                 <div class="radio-ctnr">
                     <label>En solde
-                        <input type="radio" @if($product->discount ==1 ) checked @endif name="discount" id="discount" value="1" checked/>
+                        <input type="radio" @if($product->discount == 1 ) checked @endif name="discount" id="discount" value="1" checked/>
                     </label>
 
                     <label>Pas en solde
-                        <input type="radio" @if($product->discount ==0 ) checked @endif name="discount" id="discount" value="0" />
+                        <input type="radio" @if($product->discount == 0 ) checked @endif name="discount" id="discount" value="0" />
                     </label>
                 </div>
             </div>

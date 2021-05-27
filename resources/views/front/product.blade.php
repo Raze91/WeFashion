@@ -25,7 +25,7 @@
 
         <p><span>Prix :</span> {{$product->discount ? (50/100) * $product->price . "€ au lieu de " . $product->price : $product->price}} €</p>
 
-        <p><span>Catégorie : </span> {{$product->category->gender}}</p>
+        <p><span>Catégorie : </span> {{$product->category ? $product->category->gender : "Pas de catégorie"}}</p>
     </div>
 </section>
 
