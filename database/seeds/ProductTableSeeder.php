@@ -59,7 +59,7 @@ class ProductTableSeeder extends Seeder
             // les méthodes du pluck shuffle et slice permettent de mélanger et récupérer un certain
             // nombre de 3 à partir de l'indice 0, comme ils sont mélangés à chaque fois qu'un livre est crée
             // La méthode all permet de faire la requête et de récupérer le résultat sous forme d'un tableau
-            $sizes = App\Size::pluck('id')->shuffle()->slice(0, rand(1, 3))->all();
+            $sizes = App\Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
 
             // Il faut se mettre maintenant en relation avec les auteurs (relation ManyToMany)
             // et attacher les id des auteurs dans la table de liaison.

@@ -10,16 +10,20 @@
         <h1>{{$product->name}}</h1>
         <p>{{$product->description}}</p>
 
+        @if(count($product->sizes) > 0)
         <label>Taille :
-            <select>
-                @forelse($product->sizes as $size)
-                <option>{{$size->value}}</option>
-                @empty
-                Pas de tailles disponibles
-                @endforelse
-            </select>
 
+            <select>
+                @foreach($product->sizes as $size)
+                <option>{{$size->value}}</option>
+                @endforeach
+            </select>
         </label>
+        @else
+        <p><span>Taille :</span>Aucune tailles disponibles</p>
+        @endif
+
+
 
         <p class="discount">{{$product->discount == 1 ? "Produit actuellement en solde" : "Produit non soldé"}}</p>
 
