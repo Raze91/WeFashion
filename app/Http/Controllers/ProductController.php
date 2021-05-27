@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Product;
+use App\Size;
 use ArrayObject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -24,16 +25,19 @@ class ProductController extends Controller
     {
         // permet de récupérer une collection type array avec en clé id => name
         $categories = Category::pluck('gender', 'id')->all();
+        $sizes = Size::pluck('value', 'id')->all();
 
         $token = bin2hex(random_bytes(8));
 
-        return view('back.product.create', ['categories' => $categories, 'ref' => $token]);
+        return view('back.product.create', ['categories' => $categories, 'ref' => $token, "sizes" => $sizes]);
     }
 
     public function store(StoreProductRequest $request)
     {
 
         $product = Product::create($request->all());
+
+        $product->sizes()->attach($request->sizes);
 
         $im = $request->file('picture');
 
@@ -54,8 +58,9 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $categories = Category::pluck('gender', 'id')->all();
+        $sizes = Size::pluck('value', 'id')->all();
 
-        return view('back.product.edit', compact('product', 'categories'));
+        return view('back.product.edit', compact('product', 'categories', 'sizes'));
     }
 
     /**
@@ -72,6 +77,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
+        $product->sizes()->sync($request->sizes);
 
         // $im = $request->file('picture');
 

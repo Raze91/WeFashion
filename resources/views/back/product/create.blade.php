@@ -40,21 +40,11 @@
             <h4>Tailles :</h4>
 
             <div class="sizes-ctnr">
-                <label>XS
-                    <input type="checkbox" name="sizes[]" value="XS" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
+                @foreach($sizes as $id => $size)
+                <label>{{$size}}
+                    <input type="checkbox" name="sizes[]" value="{{$id}}" id="sizes{{$id}}" {{ ( !empty(old('sizes')) and in_array($id, old('sizes')) )? 'checked' : '' }} />
                 </label>
-                <label>S
-                    <input type="checkbox" name="sizes[]" value="S" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
-                </label>
-                <label>M
-                    <input type="checkbox" name="sizes[]" value="M" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
-                </label>
-                <label>L
-                    <input type="checkbox" name="sizes[]" value="L" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
-                </label>
-                <label>XL
-                    <input type="checkbox" name="sizes[]" value="XL" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
-                </label>
+                @endforeach
             </div>
 
             <label>Categories :

@@ -127,7 +127,9 @@ header {
     display: flex;
     text-align: left;
 }
-
+.selected-product-ctnr div {
+    width: 100%;
+}
 .selected-product-ctnr label {
     width: 50%;
     display: flex;

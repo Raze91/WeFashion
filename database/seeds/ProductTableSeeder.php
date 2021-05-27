@@ -21,6 +21,22 @@ class ProductTableSeeder extends Seeder
             "gender" => "Femme"
         ]);
 
+        App\Size::create([
+            "value" => "XS",
+        ]);
+        App\Size::create([
+            "value" => "S",
+        ]);
+        App\Size::create([
+            "value" => "M",
+        ]);
+        App\Size::create([
+            "value" => "L",
+        ]);
+        App\Size::create([
+            "value" => "XL",
+        ]);
+
         factory(App\Product::class, 20)->create()->each(function ($product) {
             // associe une categorie à un produit
             $category = App\Category::find(rand(1, 2));
@@ -38,6 +54,16 @@ class ProductTableSeeder extends Seeder
             $product->image()->create([
                 'link' => $file
             ]);
+
+            // récupération des id des auteurs à partir de la méthode pluck d'Eloquent
+            // les méthodes du pluck shuffle et slice permettent de mélanger et récupérer un certain
+            // nombre de 3 à partir de l'indice 0, comme ils sont mélangés à chaque fois qu'un livre est crée
+            // La méthode all permet de faire la requête et de récupérer le résultat sous forme d'un tableau
+            $sizes = App\Size::pluck('id')->shuffle()->slice(0, rand(1, 3))->all();
+
+            // Il faut se mettre maintenant en relation avec les auteurs (relation ManyToMany)
+            // et attacher les id des auteurs dans la table de liaison.
+            $product->sizes()->attach($sizes);
 
 
             $product->save(); // il faut sauvegarder l'association pour faire persister en base de données

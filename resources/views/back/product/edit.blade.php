@@ -30,21 +30,14 @@
             <h4>Tailles :</h4>
 
             <div class="sizes-ctnr">
-                <label>XS
-                    <input type="checkbox" name="sizes[]" value="XS" />
+                @foreach($sizes as $id => $size)
+                <label>{{$size}}
+                    <input type="checkbox" name="sizes[]" value="{{$id}}" id="size{{$id}}" @if( is_null($product->sizes) == false and in_array($id, $product->sizes()->pluck('id')->all()))
+                    checked
+                    @endif
+                    />
                 </label>
-                <label>S
-                    <input type="checkbox" name="sizes[]" value="S" />
-                </label>
-                <label>M
-                    <input type="checkbox" name="sizes[]" value="M" />
-                </label>
-                <label>L
-                    <input type="checkbox" name="sizes[]" value="L" />
-                </label>
-                <label>XL
-                    <input type="checkbox" name="sizes[]" value="XL" />
-                </label>
+                @endforeach
             </div>
 
             <label>Categories :

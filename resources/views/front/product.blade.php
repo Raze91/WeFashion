@@ -12,8 +12,13 @@
 
         <label>Taille :
             <select>
-                <option>{{$product->size}}</option>
+                @forelse($product->sizes as $size)
+                <option>{{$size->value}}</option>
+                @empty
+                Pas de tailles disponibles
+                @endforelse
             </select>
+
         </label>
 
         <p class="discount">{{$product->discount == 1 ? "Produit actuellement en solde" : "Produit non soldé"}}</p>
