@@ -28,7 +28,6 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'string',
-            "size" => 'required|' . Rule::in(['XS','S','M','L','XL']),
             "price" => 'numeric',
             'category_id' => 'integer',
             'published' => 'boolean',

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('product.store', $categories)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('product.index')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     <h1>Créer un nouveau produit :</h1>
     <div class="global-ctnr">
@@ -28,7 +28,7 @@
                 <input type="number" min="1" max="9999" step="0.01" name="price" id="price" value="{{old('price')}}" />
             </label>
 
-            <label>Taille :
+            <!-- <label>Taille :
                 <select name="size" id="size">
                     <option {{ old('size') == "XS" ? 'selected' : '' }} value="XS">XS</option>
                     <option {{ old('size') == "S" ? 'selected' : '' }} value="S">S</option>
@@ -36,7 +36,26 @@
                     <option {{ old('size') == "L" ? 'selected' : ''}} value="L">L</option>
                     <option {{ old('size') == "XL" ? 'selected' : ''}} value="XL">XL</option>
                 </select>
-            </label>
+            </label> -->
+            <h4>Tailles :</h4>
+
+            <div class="sizes-ctnr">
+                <label>XS
+                    <input type="checkbox" name="sizes[]" value="XS" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
+                </label>
+                <label>S
+                    <input type="checkbox" name="sizes[]" value="S" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
+                </label>
+                <label>M
+                    <input type="checkbox" name="sizes[]" value="M" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
+                </label>
+                <label>L
+                    <input type="checkbox" name="sizes[]" value="L" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
+                </label>
+                <label>XL
+                    <input type="checkbox" name="sizes[]" value="XL" {{ ( !empty(old('sizes[]')) and in_array($id, old('sizes[]')) )? 'checked' : '' }} />
+                </label>
+            </div>
 
             <label>Categories :
                 <select id="categories" name="category_id">

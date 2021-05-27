@@ -5,7 +5,7 @@
 <form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     {{method_field('PUT')}}
-    <h1>Créer un nouveau produit :</h1>
+    <h1>Modifier un nouveau produit :</h1>
     <div class="global-ctnr">
         <div class="left-ctnr">
 
@@ -27,15 +27,25 @@
                 <input type="number" min="1" max="9999" step="0.01" name="price" id="price" value="{{$product->price}}" />
             </label>
 
-            <label>Taille :
-                <select name="size" id="size">
-                    <option {{ $product->size == "XS" ? 'selected' : '' }} value="XS">XS</option>
-                    <option {{ $product->size == "S" ? 'selected' : '' }} value="S">S</option>
-                    <option {{ $product->size == "M" ? 'selected' : ''}} value="M">M</option>
-                    <option {{ $product->size == "L" ? 'selected' : ''}} value="L">L</option>
-                    <option {{ $product->size == "XL" ? 'selected' : ''}} value="XL">XL</option>
-                </select>
-            </label>
+            <h4>Tailles :</h4>
+
+            <div class="sizes-ctnr">
+                <label>XS
+                    <input type="checkbox" name="sizes[]" value="XS" />
+                </label>
+                <label>S
+                    <input type="checkbox" name="sizes[]" value="S" />
+                </label>
+                <label>M
+                    <input type="checkbox" name="sizes[]" value="M" />
+                </label>
+                <label>L
+                    <input type="checkbox" name="sizes[]" value="L" />
+                </label>
+                <label>XL
+                    <input type="checkbox" name="sizes[]" value="XL" />
+                </label>
+            </div>
 
             <label>Categories :
                 <select id="categories" name="category_id">

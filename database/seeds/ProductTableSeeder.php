@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class ProductTableSeeder extends Seeder
 {
@@ -21,13 +22,24 @@ class ProductTableSeeder extends Seeder
         ]);
 
         factory(App\Product::class, 20)->create()->each(function ($product) {
-            // associons un genre à un livre que nous venons de créer
+            // associe une categorie à un produit
             $category = App\Category::find(rand(1, 2));
 
-            // pour chaque $book on lui associe un genre en particulier
+            // pour chaque $product on lui associe un genre en particulier
             $product->category()->associate($category);
 
-            
+            $files = Storage::allFiles($category->gender == "Homme" ? "hommes" : "femmes");
+
+            $fileIndex = array_rand($files);
+            $file = $files[$fileIndex];
+
+            // ajout des images
+
+            $product->image()->create([
+                'link' => $file
+            ]);
+
+
             $product->save(); // il faut sauvegarder l'association pour faire persister en base de données
         });
     }

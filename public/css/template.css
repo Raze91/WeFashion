@@ -7,7 +7,7 @@ body {
     padding: 10px;
     margin: 15px 0;
     width: 30%;
-    min-width: 200px;
+    min-width: 300px;
     box-shadow: 5px 5px 0 rgb(216, 213, 213);
     border-radius: 10px;
     text-align: left;
@@ -25,6 +25,19 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px 0;
+}
+.card-img-ctnr {
+    height: 406px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.card-img-ctnr img {
+    width: auto;
+    height: 100%;
 }
 nav {
     display: flex; 
@@ -86,9 +99,7 @@ nav li a:hover {
 }
 
 .content img {
-    width: 100%;
     border-radius: 10px;
-    padding-bottom: 10px;
 }
 
 .prices {
@@ -176,6 +187,12 @@ footer {
     color: white;
     padding: 7px;
     border-radius: 4px;
+}
+
+.sizes-ctnr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 @media  (max-width: 674px) {
     .content {

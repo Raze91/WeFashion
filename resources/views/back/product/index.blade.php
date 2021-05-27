@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="display: flex; flex-direction: column; width: fit-content;">
-    <button><a href="{{route('product.create')}}">Ajouter un livre</a></button>
+    <button><a href="{{route('product.create')}}">Ajouter un produit</a></button>
     {{$products->links()}}
     @include('back.partials.flash')
 </div>
@@ -23,7 +23,7 @@
         <tr>
             <td data-label="Nom"><a href="{{url('product', $product->id)}}">{{$product->name}}</a></td>
             <td data-label="Categorie">{{$product->category->gender}}</td>
-            <td data-label="Prix">{{$product->price}}€</td>
+            <td data-label="Prix">{{$product->discount ? $product->price. " => " .(50/100) * $product->price : $product->price}}€</td>
             <td data-label="Etat">
                 @if($product->published == true)
                 <span class="published">Publié</span>

@@ -37,7 +37,6 @@ class ProductController extends Controller
 
         $im = $request->file('picture');
 
-
         if (!empty($im)) {
             // méthode store retourne un link hash sécurisé
             $link = $request->file('picture')->store('/');
@@ -45,7 +44,6 @@ class ProductController extends Controller
 
             $product->image()->create([
                 'link' => $link,
-                'product_id' => 2
             ]);
         }
 
