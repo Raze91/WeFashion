@@ -22,8 +22,8 @@
         @foreach($products as $product)
         <tr>
             <td data-label="Nom"><a href="{{url('product', $product->id)}}">{{$product->name}}</a></td>
-            <td data-label="Categorie">{{$product->category->gender}}</td>
-            <td data-label="Prix">{{$product->discount ? $product->price. " => " .(50/100) * $product->price : $product->price}}€</td>
+            <td data-label="Categorie">{{$product->category ? $product->category->gender : "Pas de catégorie"}}</td>
+            <td data-label="Prix">{{$product->discount ? $product->price."€". " => " .(50/100) * $product->price : $product->price}}€</td>
             <td data-label="Etat">
                 @if($product->published == true)
                 <span class="published">Publié</span>

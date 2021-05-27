@@ -2,6 +2,13 @@ body {
     font-family: Poppins;
     text-align: center;
 }
+
+.flex-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
 .product-card {
     background-color: white;
     padding: 10px;
@@ -45,6 +52,7 @@ nav {
     color: white; 
     padding: 20px 0; 
     align-items: center;
+    height: 10%;
 }
 
 nav div {
@@ -155,7 +163,11 @@ header {
 
 footer {
     background-color: steelblue;
+    width: 100%;
+    bottom: 0;
+    left: 0;
 }
+
 .footer-content {
     width: 80%;
     margin: auto;
@@ -196,6 +208,32 @@ footer {
     width: 100%;
     justify-content: space-between;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+    width: 50%;
+}
+
+.form label div {
+    display: flex;
+    width: 100%;
+}
+
+.form label input,
+.form label textarea,
+.form label select {
+    width: 100%;
+}
+
 @media  (max-width: 674px) {
     .content {
         width: 100%;
@@ -225,5 +263,13 @@ footer {
 
     .selected-product-ctnr img {
         width: 100%;
+    }
+
+    .global-ctnr {
+        flex-direction: column;
+    }
+
+    .global-ctnr label {
+        width: 80%;
     }
 }
