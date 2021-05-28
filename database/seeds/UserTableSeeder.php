@@ -14,6 +14,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        // Créer un compte user et un compte admin
         DB::table('users')->insert([
             [
                 'name' => 'Edouard',
@@ -22,9 +23,9 @@ class UserTableSeeder extends Seeder
                 'elevation' => 'admin'
             ],
             [
-                'name' => 'Sami',
-                'email' => 'sami@lem.fr',
-                'password' => Hash::make('sami'),
+                'name' => 'user',
+                'email' => 'user@user.fr',
+                'password' => Hash::make('user'),
                 'elevation' => 'user'
             ]
         ]);

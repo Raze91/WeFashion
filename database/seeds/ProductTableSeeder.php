@@ -28,11 +28,12 @@ class ProductTableSeeder extends Seeder
             ]);
         };
 
-        factory(App\Product::class, 20)->create()->each(function ($product) {
-            // associe une categorie à un produit
+        // Création de 80 produits
+        factory(App\Product::class, 80)->create()->each(function ($product) {
+            // Choisi une catégorie parmis les 2 disponibles de base (Homme et Femme)
             $category = App\Category::find(rand(1, 2));
 
-            // pour chaque $product on lui associe une categorie en particulier
+            // pour chaque produit, on lui associe une categorie en particulier
             $product->category()->associate($category);
 
             $files = Storage::allFiles($category->gender);
@@ -40,13 +41,14 @@ class ProductTableSeeder extends Seeder
             $fileIndex = array_rand($files);
             $file = $files[$fileIndex];
 
-            // ajout des images
+            // ajoute une image à chaque produit en base de donnée
             $product->image()->create([
                 'link' => $file
             ]);
 
             // Créer un tableau aléatoire de tailles 
             $sizes = App\Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
+            // Filtre le tableau
             $filtered_sizes = array_values(array_sort($sizes, function ($value) {
                 return $value;
             }));
