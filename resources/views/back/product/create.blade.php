@@ -25,7 +25,7 @@
             </label>
 
             <label>Prix :
-                <input type="number" min="1" max="9999" step="0.01" name="price" id="price" value="{{old('price')}}" />
+                <input type="number" min="1" max="1000" step="0.01" name="price" id="price" value="{{old('price')}}" />
             </label>
 
             <!-- <label>Taille :

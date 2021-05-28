@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="display: flex; flex-direction: column; width: fit-content;">
-    <button><a href="{{route('category.create')}}">Ajouter une catégorie</a></button>
+    <button><a href="{{route('category.create')}}">Nouveau</a></button>
     {{$categories->links()}}
     @include('back.partials.flash')
 </div>

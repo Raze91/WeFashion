@@ -26,13 +26,13 @@
             <li><a href="{{route('product.index')}}">Dashboard</a></li>
             @else
             <li>
-                <a href="/">Retour</a>
+                <a href="/"><i class="fas fa-home fa-lg"></i></a>
             </li>
             @endif
             @endif
             <li>
                 <a href="{{route('logout')}}" onclick="event.preventDefault(); 
-                document.getElementById('logout-form').submit();">Logout</a>
+                document.getElementById('logout-form').submit();">Déconnexion</a>
                 <form id="logout-form" action="{{route('logout')}}" method="POST">{{csrf_field()}}</form>
             </li>
             @else

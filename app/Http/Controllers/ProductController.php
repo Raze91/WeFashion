@@ -48,7 +48,7 @@ class ProductController extends Controller
                 // méthode store retourne un link hash sécurisé
                 $link = $request->file('picture')->store('/' . $category);
             } else {
-                $link = $request->file('picture')->store('/NoCategorie');
+                $link = $request->file('picture')->store('/NoCategory');
             }
 
 

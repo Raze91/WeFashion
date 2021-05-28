@@ -19,8 +19,8 @@
     <div>
         <h4>Réseaux sociaux</h4>
         <ul>
-            <li><a href="/">Facebook</a></li>
-            <li><a href="/">Instagram</a></li>
+            <li><a href="/"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="/"><i class="fab fa-instagram"></i> Instagram</a></li>
             <li><a href="/">Inscrivez vous à la newsletter</a></li>
         </ul>
     </div>

@@ -52,7 +52,7 @@ class Product extends Model
 
     public function sizes()
     {
-        return $this->belongsToMany(Size::class);
+        return $this->hasMany(Size::class);
     }
 
     public $timestamps = false;

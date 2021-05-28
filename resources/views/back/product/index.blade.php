@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<div style="display: flex; flex-direction: column; width: fit-content;">
-    <button><a href="{{route('product.create')}}">Ajouter un produit</a></button>
-    {{$products->links()}}
+<div class="admin-header">
+    <button><a href="{{route('product.create')}}">Nouveau</a></button>
+    <h3>Bienvenue {{Auth::user()->name}} !</h3>
     @include('back.partials.flash')
 </div>
 <table>
@@ -13,8 +13,8 @@
             <th>Categorie</th>
             <th>Prix</th>
             <th>Etat</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Edition</th>
+            <th>Suppression</th>
         </tr>
     </thead>
 
@@ -31,18 +31,20 @@
                 <span class="unpublished">Pas publié</span>
                 @endif
             </td>
-            <td data-label="Edit"><a href="{{route('product.edit', $product->id)}}">Edit</a></td>
+            <td data-label="Edit"><a href="{{route('product.edit', $product->id)}}">Editer</a></td>
             <td data-label="Delete">
                 <form class="deleteForm" action="{{ route('product.destroy', $product->id)}}" method="POST" style='margin: 0'>
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
-                    <button class="delete" type="submit">DELETE</button>
+                    <button class="delete" type="submit">Supprimer</button>
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+{{$products->links()}}
+
 @endsection
 
 @section('scripts')
