@@ -60,10 +60,13 @@ class ProductTableSeeder extends Seeder
             // nombre de 3 à partir de l'indice 0, comme ils sont mélangés à chaque fois qu'un livre est crée
             // La méthode all permet de faire la requête et de récupérer le résultat sous forme d'un tableau
             $sizes = App\Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
+            $filtered_sizes = array_values(array_sort($sizes, function ($value) {
+                return $value;
+            }));
 
             // Il faut se mettre maintenant en relation avec les auteurs (relation ManyToMany)
             // et attacher les id des auteurs dans la table de liaison.
-            $product->sizes()->attach($sizes);
+            $product->sizes()->attach($filtered_sizes);
 
 
             $product->save(); // il faut sauvegarder l'association pour faire persister en base de données
