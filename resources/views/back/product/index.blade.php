@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="admin-header">
-    <button><a href="{{route('product.create')}}">Nouveau</a></button>
+    <a class="button" href="{{route('product.create')}}">Nouveau</a>
     <h3>Bienvenue {{Auth::user()->name}} !</h3>
     @include('back.partials.flash')
 </div>
@@ -25,10 +25,10 @@
             <td data-label="Categorie">{{$product->category ? $product->category->gender : "Pas de catégorie"}}</td>
             <td data-label="Prix">{{$product->discount ? $product->price."€". " => " .(50/100) * $product->price : $product->price}}€</td>
             <td data-label="Etat">
-                @if($product->published == true)
-                <span class="published">Publié</span>
+                @if($product->discount == true)
+                <span class="published">Soldé</span>
                 @else
-                <span class="unpublished">Pas publié</span>
+                <span class="unpublished">Standart</span>
                 @endif
             </td>
             <td data-label="Edit"><a href="{{route('product.edit', $product->id)}}">Editer</a></td>
@@ -65,36 +65,6 @@
     thead,
     tr>td {
         border-bottom: solid 1px gray;
-    }
-
-    button {
-        background-color: dodgerblue;
-        border: none;
-        border-radius: 4px;
-        padding: 8px;
-    }
-
-    button:hover {
-        background-color: cornflowerblue;
-    }
-
-    button a {
-        color: white;
-    }
-
-    button a:hover {
-        color: white;
-        text-decoration: none;
-    }
-
-    .delete {
-        background-color: crimson;
-        display: block;
-        color: white;
-    }
-
-    .delete:hover {
-        background-color: brown;
     }
 
     .published {

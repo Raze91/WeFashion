@@ -9,19 +9,20 @@
 <div class="products-ctnr">
     @forelse($products as $product)
 
-    <div class="product-card">
+    <a class="product-card" href="{{url('product', $product->id)}}">
         <div class="card-img-ctnr">
             @if($product->image)
             <img src="{{asset('images/'.$product->image->link)}}">
+            @else
+            <img src="{{asset('images/noImage.jpg')}}" />
             @endif
         </div>
         <div class="prices">
             <p class="old">{{$product->price}}€</p>
             <p>{{(50/100) * $product->price}}€</p>
         </div>
-        <h2><a href="{{url('product', $product->id)}}">{{$product->name}}</a></h2>
-        <p>{{$product->description}}</p>
-    </div>
+        <h3>{{$product->name}}</h3>
+    </a>
     @empty
     <h2>Pas de produit</h2>
     @endforelse

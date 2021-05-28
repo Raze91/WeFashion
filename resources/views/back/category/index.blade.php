@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div style="display: flex; flex-direction: column; width: fit-content;">
-    <button><a href="{{route('category.create')}}">Nouveau</a></button>
+<div class="admin-header">
+    <a class="button" href="{{route('category.create')}}">Nouveau</a>
     {{$categories->links()}}
     @include('back.partials.flash')
 </div>
@@ -19,7 +19,7 @@
         @foreach($categories as $category)
         <tr>
             <td>{{$category->gender}}</td>
-            
+
             <td><a href="{{route('category.edit', $category->id)}}">Edit</a></td>
             <td>
                 <form class="deleteForm" action="{{ route('category.destroy', $category->id)}}" method="POST" style='margin: 0'>
@@ -52,26 +52,6 @@
     thead,
     tr>td {
         border-bottom: solid 1px gray;
-    }
-
-    button {
-        background-color: dodgerblue;
-        border: none;
-        border-radius: 4px;
-        padding: 8px;
-    }
-
-    button:hover {
-        background-color: cornflowerblue;
-    }
-
-    button a {
-        color: white;
-    }
-
-    button a:hover {
-        color: white;
-        text-decoration: none;
     }
 
     .delete {

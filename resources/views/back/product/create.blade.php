@@ -28,15 +28,6 @@
                 <input type="number" min="1" max="1000" step="0.01" name="price" id="price" value="{{old('price')}}" />
             </label>
 
-            <!-- <label>Taille :
-                <select name="size" id="size">
-                    <option {{ old('size') == "XS" ? 'selected' : '' }} value="XS">XS</option>
-                    <option {{ old('size') == "S" ? 'selected' : '' }} value="S">S</option>
-                    <option {{ old('size') == "M" ? 'selected' : ''}} value="M">M</option>
-                    <option {{ old('size') == "L" ? 'selected' : ''}} value="L">L</option>
-                    <option {{ old('size') == "XL" ? 'selected' : ''}} value="XL">XL</option>
-                </select>
-            </label> -->
             <h4>Tailles :</h4>
 
             <div class="sizes-ctnr">
