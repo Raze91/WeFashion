@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 
+// Définit les fausse donnèes que faker va injecter dans chaque champ du produit Product
 $factory->define(App\Product::class, function (Faker $faker) {
     return [
         "name" => $faker->name(),
