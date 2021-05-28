@@ -2,13 +2,18 @@
 
 @section('content')
 
-<form action="{{route('category.update', $category->id)}}" method="POST" enctype="multipart/form-data">
+<form class="categoryForm" action="{{route('category.update', $category->id)}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     {{method_field('PUT')}}
-    
-    <h1>Modifier la catégorie :</h1>
 
-    <input type="text" name="gender" value={{$category->gender}} />
+    <h1>Créer une nouvelle catégorie :</h1>
+
+    <label>Nom de la catégorie :
+        <input type="text" name="gender" />
+    </label>
+    @if($errors->has('gender'))
+    <span class="error">{{$errors->first('gender')}}</span>
+    @endif
 
     <button type="submit">Modifier la catégorie</button>
 </form>

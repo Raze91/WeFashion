@@ -2,12 +2,14 @@
 
 @section('content')
 
-<form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
+<form class="categoryForm" action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
 
     <h1>Créer une nouvelle catégorie :</h1>
 
-    <input type="text" name="gender" />
+    <label>Nom de la catégorie :
+        <input type="text" name="gender" />
+    </label>
     @if($errors->has('gender'))
     <span class="error">{{$errors->first('gender')}}</span>
     @endif

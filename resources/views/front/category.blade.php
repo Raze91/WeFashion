@@ -22,7 +22,7 @@
         <h3>{{$product->name}}</h3>
     </a>
     @empty
-    <h2>Pas de produit</h2>
+    <h2 class="empty">Il n'y a actuellement aucun produit dans la catégorie {{$category->gender}}</h2>
     @endforelse
 </div>
 {{$products->links()}}

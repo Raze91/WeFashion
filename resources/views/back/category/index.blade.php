@@ -10,8 +10,8 @@
     <thead>
         <tr>
             <th>Categorie</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Edition</th>
+            <th>Suppression</th>
         </tr>
     </thead>
 
@@ -20,12 +20,12 @@
         <tr>
             <td>{{$category->gender}}</td>
 
-            <td><a href="{{route('category.edit', $category->id)}}">Edit</a></td>
+            <td><a href="{{route('category.edit', $category->id)}}">Editer</a></td>
             <td>
                 <form class="deleteForm" action="{{ route('category.destroy', $category->id)}}" method="POST" style='margin: 0'>
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
-                    <button class="delete" type="submit">DELETE</button>
+                    <button class="delete" type="submit">Supprimer</button>
                 </form>
             </td>
         </tr>

@@ -24,7 +24,7 @@ class CategoryController extends Controller
         Category::create($request->all());
 
 
-        return redirect()->route('category.index')->with('message', 'Catégorie créée avec succés !');
+        return redirect()->route('category.index')->with('success', 'Catégorie créée avec succés !');
     }
 
     public function edit($id)
@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $category->update($request->all());
 
 
-        return redirect()->route('category.index')->with('message', 'Categorie mise à jour avec succès !');
+        return redirect()->route('category.index')->with('success', 'Categorie mise à jour avec succès !');
     }
 
     public function destroy($id)
