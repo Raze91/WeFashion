@@ -13,6 +13,7 @@
     @if($errors->has('gender'))
     <span class="error">{{$errors->first('gender')}}</span>
     @endif
+    @include('back.partials.flash')
 
     <button type="submit">Ajouter la catégorie</button>
 </form>

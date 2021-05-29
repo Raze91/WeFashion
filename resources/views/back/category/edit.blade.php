@@ -6,14 +6,15 @@
     {{csrf_field()}}
     {{method_field('PUT')}}
 
-    <h1>Créer une nouvelle catégorie :</h1>
+    <h1>Modifier une catégorie :</h1>
 
     <label>Nom de la catégorie :
-        <input type="text" name="gender" />
+        <input type="text" name="gender" value="{{$category->gender}}" />
     </label>
     @if($errors->has('gender'))
     <span class="error">{{$errors->first('gender')}}</span>
     @endif
+    @include('back.partials.flash')
 
     <button type="submit">Modifier la catégorie</button>
 </form>

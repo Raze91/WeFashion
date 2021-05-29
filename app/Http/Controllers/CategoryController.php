@@ -17,12 +17,26 @@ class CategoryController extends Controller
     }
 
     // Méthode qui affiche la vue du formulaire de création
-    public function create() {
-        
+    public function create()
+    {
+
         return view('back.category.create');
     }
     // Méthode qui créer une nouvelle catégorie et redirige vers l'index
-    public function store(StoreCategoryRequest $request) {
+    public function store(StoreCategoryRequest $request)
+    {
+        // Récupére les catégories
+        $categories = Category::pluck('gender', 'id')->all();
+
+        // Boucle sur les catégories
+        foreach ($categories as $category) {
+            // Vérifie si la catégorie existe déjà
+            // Si oui, renvoie au formulaire de création avec un message d'erreur
+            if ($request->gender == $category) {
+                return redirect()->route('category.create')->with('error', 'La catégorie ' . $request->gender . ' existe déjà');
+            };
+        }
+
         // Crée la categorie à partir des données de la requête
         Category::create($request->all());
 
@@ -41,17 +55,30 @@ class CategoryController extends Controller
     public function update(StoreCategoryRequest $request, $id)
     {
         // Récupère la catégorie
-        $category = Category::find($id);
+        $selectedCategory = Category::find($id);
+
+        // Récupére les catégories
+        $categories = Category::pluck('gender', 'id')->all();
+
+        // Boucle sur les catégories
+        foreach ($categories as $category) {
+            // Vérifie si la catégorie existe déjà
+            // Si oui, renvoie au formulaire de création avec un message d'erreur
+            if ($request->gender == $category) {
+                return redirect()->route('category.edit', $selectedCategory->id)->with('error', 'La catégorie ' . $request->gender . ' existe déjà');
+            };
+        }
+
 
         // Met à jour la catégorie
-        $category->update($request->all());
+        $selectedCategory->update($request->all());
 
 
         return redirect()->route('category.index')->with('success', 'Categorie mise à jour avec succès !');
     }
     // Méthode qui supprime la catégorie et redirige vers l'index
     public function destroy($id)
-    {   
+    {
         // Récupére la catégorie
         $category = Category::find($id);
         // Supprime la catégorie en base de donnée
