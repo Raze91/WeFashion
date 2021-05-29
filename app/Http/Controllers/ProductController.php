@@ -35,7 +35,6 @@ class ProductController extends Controller
     // et redirige vers l'index
     public function store(StoreProductRequest $request)
     {
-        dd($request->sizes);
         // Crée le Product avec les données stockées dans la requête
         $product = Product::create($request->all());
         // Attache les tailles au Produit
