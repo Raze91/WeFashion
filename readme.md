@@ -34,6 +34,12 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+#### Lancez le projet ####
+
+```
+php artisan serve
+```
+
 ## Utilisateurs disponibles ##
 
 #### Administrateur ####
