@@ -28,7 +28,7 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'string',
-            "price" => 'numeric',
+            "price" => 'required|numeric',
             'category_id' => 'integer',
             'published' => 'boolean',
             'discount' => 'boolean',

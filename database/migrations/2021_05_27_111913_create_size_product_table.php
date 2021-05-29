@@ -14,6 +14,7 @@ class CreateSizeProductTable extends Migration
     public function up()
     {
         Schema::create('product_size', function (Blueprint $table) {
+            // Fais la liaison entre les tables products et sizes
             $table->unsignedInteger("product_id");
             $table->unsignedInteger("size_id");
 

@@ -26,6 +26,9 @@
 
             <label>Prix :
                 <input type="number" min="1" max="1000" step="0.01" name="price" id="price" value="{{old('price')}}" />
+                @if($errors->has('price'))
+                <span class="error">{{$errors->first('price')}}</span>
+                @endif
             </label>
 
             <h4>Tailles :</h4>

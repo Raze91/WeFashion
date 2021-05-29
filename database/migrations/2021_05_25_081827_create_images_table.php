@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->string("link");
 
+            // Lie la table images à la table products 
             $table->unsignedInteger("product_id")->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
